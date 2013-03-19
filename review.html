@@ -43,6 +43,7 @@
               <div class="span10">
                 <a href="review.html" class="btn btn-warning">I can't review this page</a>
                 because I am the page author, perceive a conflict of interest, or would otherwise like to decline.
+                Give me another!
               </div>
             </div>
 
@@ -57,7 +58,7 @@
                   <div class="span11">
                     <label for="delete_yes">This page should not exist because
                       it is empty or should never have been made in the first 
-                      place. Explain why (below) and just submit without doing
+                      place. Explain why (below) and then <button class="btn" type="submit">submit</button> without doing
                       further review. </label>
                   </div>
                 </div> 
@@ -72,8 +73,8 @@
                    </div>
                    <div class="span11">
                      <label for="delete_no">This page may have problems
-                       but is not inherently
-                       something that should have never been created.</label>
+                       but is not obviously something that should have never been created.
+                       Go on and fill out the rest of the review.</label>
                    </div>
                  </div>
               </div>
@@ -121,17 +122,20 @@
     
     
     <script type="text/javascript" charset="utf-8">
+    
+    var expandedHeight = 66;
+    var contractedHeight = 6;
      function expand() {                          
-       $('#pageframe').height("25%");
-       $('#review').height("75%").css('overflow', 'scroll');  
+       $('#pageframe').height((100 - expandedHeight) + '%');
+       $('#review').height(expandedHeight + '%').css('overflow', 'scroll');  
        $('#toggle a').unbind('click.bmt').bind('click.bmt', contract);  
        $('i', '#toggle a').removeClass('icon-circle-arrow-up').addClass('icon-circle-arrow-down');  
        $('#tabs').show();   
      }                           
 
      function contract() {    
-       $('#pageframe').height("92%");  
-       $('#review').height("8%").css('overflow', 'hidden');
+       $('#pageframe').height((100 - contractedHeight) + '%');  
+       $('#review').height(contractedHeight + '%').css('overflow', 'hidden');
        
        $('#toggle a').unbind('click.bmt').bind('click.bmt', expand);
        $('i', '#toggle a').removeClass('icon-circle-arrow-down').addClass('icon-circle-arrow-up');  
@@ -148,6 +152,7 @@
      
      $(document).ready(function() {
         $('#toggle a').unbind('click.bmt').bind('click.bmt', expand);
+        $('#tabs').hide();
        
      });               
     </script>
